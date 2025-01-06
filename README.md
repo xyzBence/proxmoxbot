@@ -57,6 +57,8 @@ last update: 2025-01-06
 
 This is still a beta version, and more features, improvements, and optimizations will be coming soon.
 
+If you need help, my Discord is: bbencevagyok
+
 ![kép](https://github.com/user-attachments/assets/aa20bb15-39e5-4e7d-aa0a-762486691233)
 
 ![kép](https://github.com/user-attachments/assets/90806fac-5e62-4c43-af34-a7dfb5a5b44c)
