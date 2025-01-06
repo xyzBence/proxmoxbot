@@ -27,7 +27,7 @@ Content of the config.json file:
 
 1. --> Enter your bot token between the "" here: https://discord.com/developers/applications to create a Discord bot. Help: https://discordpy.readthedocs.io/en/stable/discord.html
 
-3. --> Enter your Proxmox username between the "" here, by default: root@pam
+2. --> Enter your Proxmox username between the "" here, by default: root@pam
 
 3. --> Enter the Proxmox access between the "" here, e.g.: 192.168.0.102:8006
 
