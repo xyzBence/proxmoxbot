@@ -1,0 +1,99 @@
+{
+    "bot_token":"your_bot_token",		---> 1.		            
+    "proxmox": {
+        "host":"your_host",			---> 2.             
+        "user":"your_user",			---> 3.             
+        "password":"your_psswd",		---> 4.         
+        "verify_ssl": false			---> 5.
+    },
+    "admin":{
+        "123123": "Admin ID"			--> 6.
+    },
+    "staff": {
+        "123123": "Staff ID"			--> 7.
+    },
+    "user": {
+        "123123": {				--> 8.
+           "allowed_vms": ["100"]		--> 8.
+        }
+    }
+
+}
+
+
+
+1. --> Enter your bot token between the "" here: https://discord.com/developers/applications to create a Discord bot. Help: https://discordpy.readthedocs.io/en/stable/discord.html
+
+3. --> Enter your Proxmox username between the "" here, by default: root@pam
+
+3. --> Enter the Proxmox access between the "" here, e.g.: 192.168.0.102:8006
+
+4. --> Enter your Proxmox password between the "" here, e.g.: benceontop
+
+5. --> Leave it as is this is the default
+
+6. --> Instead of "123123", enter the server owner's Discord ID between the "". The owner has full permissions to everything and all commands. They will receive notifications in case of an emergency and when someone performs an interaction, e.g.: stops a VM.
+
+7. --> Instead of "123123", enter the Discord ID of the server staff member between the "". The staff has full permissions to everything but will not receive any notifications.
+
+8. --> Instead of "123123", enter the Discord ID of the server user between the "". Instead of "100", enter the ID of the VM that the user can manage. The user can only start, stop, and restart the defined VM, and they also have access to basic commands like !serverinfo.
+
+
+-------------------------------
+The staff and user section can be further expanded.
+-------------------------------
+
+-------------------------------
+Anyone who is neither a user, nor a staff member, nor an admin has no permissions for anything, and the bot will return an error: Error: You are not authorized to use this bot.
+-------------------------------
+
+
+----> Commands: 
+
+!listcommands - List all commands
+!listnodes - List all nodes
+!listvms <node> - List all VMs on a node
+!startvm <node> <vm_id> - Start a VM
+!restartvm <node> <vm_id> - Restart a VM
+!stopvm <node> <vm_id> - Stop a VM
+!serverinfo - Get server info
+!vminfo <node> - Get VM info
+
+
+
+----> Python: 
+
+python download: https://www.python.org/
+python version: 3.13.1
+(Install Python and make sure to add it to the PATH)
+
+
+Python packages:
+
+
+If you have successfully installed Python, you can verify it with this command: python --version
+
+After installing Python (with PATH added), install these packages from cmd.
+
+pip install discord.py
+pip install proxmoxer
+pip install requests
+pip install ping3
+pip install psutil
+
+
+
+----> Proxmox: 
+
+version: 8.3.2
+
+How can I check my version? Either through the web interface or by using the pveversion command.
+
+
+
+----------------------------
+Made By: Bence
+2025-01-06
+
+This is still a beta version, and more features, improvements, and optimizations will be coming soon.
+
