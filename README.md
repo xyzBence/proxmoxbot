@@ -21,7 +21,7 @@ Commands:
 
 
 
-
+The start.bat file is a basic startup option in a Windows environment. The start.bat file must be in the same folder as the config.json and main.py files.
 
 In the help.txt file, everything is explained in detail, and it provides a guide for setting up the bot.
 
@@ -52,7 +52,8 @@ pip install psutil
 
 
 Made By: Bence
-2025-01-06
+Made: 2025-01-06
+last update: 2025-01-06
 
 This is still a beta version, and more features, improvements, and optimizations will be coming soon.
 
