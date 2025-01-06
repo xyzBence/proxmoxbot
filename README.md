@@ -4,12 +4,19 @@ This is a Discord bot created for managing Proxmox servers.
 Commands:
 
 !listcommands - List all commands
+
 !listnodes - List all nodes
+
 !listvms <node> - List all VMs on a node
+
 !startvm <node> <vm_id> - Start a VM
+
 !restartvm <node> <vm_id> - Restart a VM
+
 !stopvm <node> <vm_id> - Stop a VM
+
 !serverinfo - Get server info
+
 !vminfo <node> - Get VM info
 
 
@@ -26,13 +33,19 @@ Anyone who is neither a user, nor a staff member, nor an admin has no permission
 
 
 ---> python version: 3.13.1
+
 ---> Proxmox version: 8.3.2
+
 ---> python packages:
 
 pip install discord.py
+
 pip install proxmoxer
+
 pip install requests
+
 pip install ping3
+
 pip install psutil
 
 
