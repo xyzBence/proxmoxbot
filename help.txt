@@ -93,7 +93,8 @@ How can I check my version? Either through the web interface or by using the pve
 
 ----------------------------
 Made By: Bence
-2025-01-06
+Made: 2025-01-06
+last update: 2025-01-06
 
 This is still a beta version, and more features, improvements, and optimizations will be coming soon.
 
