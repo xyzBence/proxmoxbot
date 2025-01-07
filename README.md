@@ -46,7 +46,7 @@ Anyone who is neither a user, nor a staff member, nor an admin has no permission
 
 ---> Proxmox version: 8.3.2
 
----> python packages:
+---> python packages: [install]
 
 pip install discord.py
 
@@ -63,18 +63,31 @@ pip install psutil
 ---> Imports:
 
 import discord
+
 from discord.ext import commands
+
 import json
+
 import time
+
 from proxmoxer import ProxmoxAPI
+
 import requests
+
 from ping3 import ping
+
 import psutil
+
 import subprocess
+
 import statistics
+
 from discord.ext import tasks
+
 import asyncio
+
 from itertools import cycle
+
 
 
 
@@ -82,18 +95,30 @@ from itertools import cycle
 
 Updates:
 
+
 1. version: 2025-01-06 [BETA]
 
+
 2. version: 2025-01-07 [BETA]
+
 	--> MAIN: Fixed authenticate user error.
+
 	--> LXC container management options have been added. Commands: !ctinfo, !startct, !stopct, !restartct
+
 	--> The !serverinfo command has been updated. The LXC container section has been added here as well. Internet monitoring bug fixed.
+
 	--> Improved appearance.
+
 	--> More refined and reworked commands.
+
 	--> Enhanced security.
+
 	--> Forced start, restart, and shutdown for cases where a VM or CT fails to stop.
+
 	--> Commands are now more optimized and easier to understand.
+
 	--> Discord bot status has been added
+
 
 
 
