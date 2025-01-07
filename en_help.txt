@@ -54,13 +54,28 @@ Anyone who is neither a user, nor a staff member, nor an admin has no permission
 ----> Commands: 
 
 !listcommands - List all commands
+
 !listnodes - List all nodes
-!listvms <node> - List all VMs on a node
-!startvm <node> <vm_id> - Start a VM
-!restartvm <node> <vm_id> - Restart a VM
-!stopvm <node> <vm_id> - Stop a VM
+
+!listvms <node_name> - List all VMs on a node
+
+!startvm <node_name> <vm_id> - Start a VM
+
+!restartvm <node_name> <vm_id> - Restart a VM
+
+!stopvm <node_name> <vm_id> - Stop a VM
+
 !serverinfo - Get server info
-!vminfo <node> - Get VM info
+
+!vminfo <node_name> - Get VMs info
+
+!ctinfo <node_name> - Get LXC containers info
+
+!startct <node_name> <ct_id> - Start an LXC container
+
+!restartct <node_name> <ct_id> - Restart an LXC container
+
+!stopct <node_name> <ct_id> - Stop an LXC container
 
 
 
