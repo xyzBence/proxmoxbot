@@ -1,0 +1,12 @@
+1. version: 2025-01-06 [BETA]
+
+2. version: 2025-01-07 [BETA]
+	--> MAIN: Fixed authenticate user error.
+	--> LXC container management options have been added. Commands: !ctinfo, !startct, !stopct, !restartct
+	--> The !serverinfo command has been updated. The LXC container section has been added here as well. Internet monitoring bug fixed.
+	--> Improved appearance.
+	--> More refined and reworked commands.
+	--> Enhanced security.
+	--> Forced start, restart, and shutdown for cases where a VM or CT fails to stop.
+	--> Commands are now more optimized and easier to understand.
+	--> Discord bot status has been added
