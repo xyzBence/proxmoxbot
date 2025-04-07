@@ -139,7 +139,7 @@ import datetime
 - **GitHub**: [xyzBence](https://github.com/xyzBence)  
 - **Discord**: `bbencevagyok`
 
-This project is still in **beta**. Stay tuned for more features, improved UI, and smarter automation tools soon!
+This project is still in **Release Candidate**. Stay tuned for more features, improved UI, and smarter automation tools soon!
 
 ---
 
