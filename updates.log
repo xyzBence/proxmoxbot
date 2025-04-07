@@ -10,3 +10,15 @@
 	--> Forced start, restart, and shutdown for cases where a VM or CT fails to stop.
 	--> Commands are now more optimized and easier to understand.
 	--> Discord bot status has been added
+
+3. version: 2025-04-07 [Release Candidate]
+	--> Added `/listcts`
+	--> Refactored all commands to use the new Discord slash (`/`) format
+	--> Message formatting
+	--> Command updates and modernization
+	--> More modern appearance
+	--> Easier usability
+	--> Various bug fixes
+	--> Tons of new features
+	--> Replaced `/vminfo` and `/ctinfo` with `/vmavg` and `/ctavg`
+	--> Improved `/serverinfo` with storage color indicators (green/yellow/red)
