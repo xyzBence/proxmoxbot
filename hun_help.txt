@@ -20,7 +20,7 @@ config.json file tartalma:
            "allowed_vms": ["100"]		--> 8.
         }
     }
-
+        "log_channel": null
 }
 
 
@@ -54,29 +54,25 @@ Akinek nincs se admin se staff se user jogosultsága hibát fog vissza kapni és
 
 ----> Parancsok: 
 
-!listcommands - List all commands
-
-!listnodes - List all nodes
-
-!listvms <node_name> - List all VMs on a node
-
-!startvm <node_name> <vm_id> - Start a VM
-
-!restartvm <node_name> <vm_id> - Restart a VM
-
-!stopvm <node_name> <vm_id> - Stop a VM
-
-!serverinfo - Get server info
-
-!vminfo <node_name> - Get VMs info
-
-!ctinfo <node_name> - Get LXC containers info
-
-!startct <node_name> <ct_id> - Start an LXC container
-
-!restartct <node_name> <ct_id> - Restart an LXC container
-
-!stopct <node_name> <ct_id> - Stop an LXC container
+|-------------------------------|-------------|
+| `/listcommands`               | Show all available commands with interactive dropdown |
+| `/listnodes`                  | List all nodes in your Proxmox cluster |
+| `/listvms <node>`             | List all virtual machines on a specific node |
+| `/vmavg <node>`               | Show average resource usage of all VMs on the node |
+| `/startvm <node> <vm_id>`     | Start a virtual machine |
+| `/restartvm <node> <vm_id>`   | Restart a virtual machine |
+| `/stopvm <node> <vm_id>`      | Stop a virtual machine |
+| `/listcts <node>`             | List all LXC containers on a node |
+| `/ctavg <node>`               | Show average resource usage of all containers |
+| `/startct <node> <ct_id>`     | Start a container |
+| `/restartct <node> <ct_id>`   | Restart a container |
+| `/stopct <node> <ct_id>`      | Stop a container |
+| `/serverinfo`                 | Display comprehensive server status and resource usage |
+| `/setlog`                     |
+| `/deletelog`                  |   
+| `/setuser`                    |
+| `/setstaff`                   |
+| `/config`                     |
 
 
 ----> start.bat:
@@ -114,10 +110,10 @@ Hogyan tudom megnézni a verzióm? A web kezelőfelületen vagy pedig a pveversi
 
 ----------------------------
 Készítette: Bence
-Készült: 2025-01-06
-Utolsó frissítés: 2025-01-06
+Készült: 2025-04-06
+Utolsó frissítés: 2025-04-07
 
-Ez egy BÉTA verzió hamarossan érkeznek frissítések és fejlesztések hozzá illtve hibajavítások.
+Ez egy Release Candidate verzió hamarossan érkeznek frissítések és fejlesztések hozzá illtve hibajavítások.
 
 Ha segítségre lenne szükséged vagy ötleted lenne keress Discordon: bbencevagyok
 
