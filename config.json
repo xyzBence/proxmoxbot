@@ -16,6 +16,6 @@
         "123123": {
            "allowed_vms": ["100"]
         }
-    }
-
+    },
+    "log_channel": null
 }
