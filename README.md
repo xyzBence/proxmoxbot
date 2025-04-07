@@ -1,155 +1,145 @@
-This is a Discord bot created for managing Proxmox servers.
+# Proxmox Discord Bot
 
+A modern Discord bot for monitoring and managing your Proxmox servers directly from Discord. Designed for simplicity, reliability, and powerful automation features.
 
-Commands:
+---
 
-!listcommands - List all commands
+## 📦 Features
 
-!listnodes - List all nodes
+- Slash command support (`/command`) for easier usage
+- Full control over Proxmox virtual machines and containers
+- Real-time server monitoring (CPU, RAM, storage, ping)
+- Dynamic command list with dropdown interaction
+- Server uptime and status tracking
+- Clean permission system based on Discord roles
+- Smart resource overview (average stats, status color indicators)
 
-!listvms <node_name> - List all VMs on a node
+---
 
-!startvm <node_name> <vm_id> - Start a VM
+## 🧾 Slash Commands
 
-!restartvm <node_name> <vm_id> - Restart a VM
+| Command                        | Description |
+|-------------------------------|-------------|
+| `/listcommands`               | Show all available commands with interactive dropdown |
+| `/listnodes`                  | List all nodes in your Proxmox cluster |
+| `/listvms <node>`             | List all virtual machines on a specific node |
+| `/vmavg <node>`               | Show average resource usage of all VMs on the node |
+| `/startvm <node> <vm_id>`     | Start a virtual machine |
+| `/restartvm <node> <vm_id>`   | Restart a virtual machine |
+| `/stopvm <node> <vm_id>`      | Stop a virtual machine |
+| `/listcts <node>`             | List all LXC containers on a node |
+| `/ctavg <node>`               | Show average resource usage of all containers |
+| `/startct <node> <ct_id>`     | Start a container |
+| `/restartct <node> <ct_id>`   | Restart a container |
+| `/stopct <node> <ct_id>`      | Stop a container |
+| `/serverinfo`                 | Display comprehensive server status and resource usage |
+| `/setlog`                     |
+| `/deletelog`                  |   
+| `/setuser`                    |
+| `/setstaff`                   |
+| `/config`                     |
 
-!stopvm <node_name> <vm_id> - Stop a VM
+---
 
-!serverinfo - Get server info
+## ⚙️ Setup Instructions
 
-!vminfo <node_name> - Get VMs info
+1. Place `main.py`, `config.json`, and `start.bat` in the same directory.
+2. Run the bot using `start.bat` (Windows) or `python3 main.py` (Linux/macOS).
+3. Configure your connection settings in `config.json`. See `help.txt` for details.
 
-!ctinfo <node_name> - Get LXC containers info
+### ⚠️ Permissions
 
-!startct <node_name> <ct_id> - Start an LXC container
+Only users with at least one of the following roles are allowed to execute commands:
+- `user`
+- `staff`
+- `admin`
 
-!restartct <node_name> <ct_id> - Restart an LXC container
+Users without the required roles will receive the message:
+> `"Error: You are not authorized to use this bot."`
 
-!stopct <node_name> <ct_id> - Stop an LXC container
+---
 
+## 📚 Python Requirements
 
+- Python version: **3.13.1**
+- Proxmox version: **8.3.2**
 
+### Required Python Packages:
 
-
-The start.bat file is a basic startup option in a Windows environment. The start.bat file must be in the same folder as the config.json and main.py files.
-
-In the help.txt file, everything is explained in detail, and it provides a guide for setting up the bot.
-
-The bot can be configured in the config.json file. Full instructions can be found in the help.txt file.
-
-Anyone who is neither a user, nor a staff member, nor an admin has no permissions for anything, and the bot will return an error: Error: You are not authorized to use this bot.
-
-
-
-
----> python version: 3.13.1
-
----> Proxmox version: 8.3.2
-
----> python packages: [install]
-
+```bash
 pip install discord.py
-
 pip install proxmoxer
-
 pip install requests
-
 pip install ping3
-
 pip install psutil
+```
 
+---
 
+## 📥 Python Imports and Their Purpose
 
----> Imports:
-
+```python
 import discord
-
 from discord.ext import commands
-
 import json
-
 import time
-
 from proxmoxer import ProxmoxAPI
-
 import requests
-
 from ping3 import ping
-
 import psutil
-
 import subprocess
-
 import statistics
-
 from discord.ext import tasks
-
 import asyncio
-
 from itertools import cycle
+from discord.ui import Select, View, Button
+import logging
+import datetime
+```
 
+---
 
+## 🔄 Updates
 
+### **version: 2025-01-06 [BETA]**
+- Initial release
 
----------------
+### **version: 2025-01-07 [BETA]**
+- Fixed user authentication issue
+- Added LXC container support (`/ctavg`, `/startct`, etc.)
+- Enhanced `/serverinfo` and bugfixes in internet monitoring
+- UI improvements and security enhancements
+- Forced control options added for VMs and CTs
+- Discord bot now shows online status
 
-Updates:
+### **version: 2025-03-24 [BETA]**
+- Major redesign: more modern layout and command handling
+- Replaced `/vminfo` and `/ctinfo` with `/vmavg` and `/ctavg`
+- Added `/listcts`
+- Improved `/serverinfo` with storage color indicators (green/yellow/red)
+- Improved dropdown-based command selection
+- Smarter and clearer bot status messages
 
+### **version: 2025-04-07 [Release Candidate]**
+- Refactored all commands to use the new Discord slash (`/`) format
+- Message formatting
+- Command updates and modernization
+- More modern appearance
+- Easier usability
+- Various bug fixes
+- Tons of new features
 
-1. version: 2025-01-06 [BETA]
+---
 
+## 👤 About
 
-2. version: 2025-01-07 [BETA]
+- **Made by**: Bence  
+- **Created**: 2025-01-06  
+- **Last Update**: 2025-04-07  
+- **GitHub**: [xyzBence](https://github.com/xyzBence)  
+- **Discord**: `bbencevagyok`
 
-	--> MAIN: Fixed authenticate user error.
+This project is still in **beta**. Stay tuned for more features, improved UI, and smarter automation tools soon!
 
-	--> LXC container management options have been added. Commands: !ctinfo, !startct, !stopct, !restartct
-
-	--> The !serverinfo command has been updated. The LXC container section has been added here as well. Internet monitoring bug fixed.
-
-	--> Improved appearance.
-
-	--> More refined and reworked commands.
-
-	--> Enhanced security.
-
-	--> Forced start, restart, and shutdown for cases where a VM or CT fails to stop.
-
-	--> Commands are now more optimized and easier to understand.
-
-	--> Discord bot status has been added
-
-
-
-
-
-Made By: Bence
-Made: 2025-01-06
-last update: 2025-01-06
-
-This is still a beta version, and more features, improvements, and optimizations will be coming soon.
-
-If you need help, my Discord is: bbencevagyok
-
-![kép](https://github.com/user-attachments/assets/59f56223-d9dd-46a1-92fa-bae3aa23c2b4)
-
-![kép](https://github.com/user-attachments/assets/98b650e0-c0af-470c-a3fa-24635f300b76)
-
-![kép](https://github.com/user-attachments/assets/e4923e64-dc3f-4573-b0fc-259da9c21d93)
-
-![kép](https://github.com/user-attachments/assets/bb96c2cf-c4be-4003-8b10-a31985390748)
-
-![kép](https://github.com/user-attachments/assets/5057da8b-7670-4f5a-9604-9a572019ac79)
-
-![kép](https://github.com/user-attachments/assets/72d8647d-a130-4f1d-8e6f-651596e17884)
-
-
-
-
-
-
-
-
-
-
+---
 
