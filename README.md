@@ -133,7 +133,7 @@ import datetime
 
 - **Made by**: Bence  
 - **Created**: 2025-01-06  
-- **Last Update**: 2025-04-07  
+- **Last Update**: 2025-04-11  
 - **GitHub**: [xyzBence](https://github.com/xyzBence)  
 - **Discord**: `bbencevagyok`
 
