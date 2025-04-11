@@ -1,21 +1,15 @@
 {
-    "bot_token":"your_bot_token",               
+    "bot_token": "",
     "proxmox": {
-        "host":"your_host",             
-        "user":"your_user",             
-        "password":"your_psswd",         
+        "host": "",
+        "user": "",
+        "password": "",
         "verify_ssl": false
     },
-    "admin":{
+    "admin": {
         "123123": "Admin ID"
     },
-    "staff": {
-        "123123": "Staff ID"
-    },
-    "user": {
-        "123123": {
-           "allowed_vms": ["100"]
-        }
-    },
+    "staff": {},
+    "user": {},
     "log_channel": null
 }
