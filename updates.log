@@ -1,24 +1,26 @@
-1. version: 2025-01-06 [BETA]
+1. version: 2025-01-06 
 
-2. version: 2025-01-07 [BETA]
-	--> MAIN: Fixed authenticate user error.
+
+2. version: 2025-01-07 
+{
+	--> MAIN: Fixed authenticate user error
 	--> LXC container management options have been added. Commands: !ctinfo, !startct, !stopct, !restartct
-	--> The !serverinfo command has been updated. The LXC container section has been added here as well. Internet monitoring bug fixed.
-	--> Improved appearance.
-	--> More refined and reworked commands.
-	--> Enhanced security.
-	--> Forced start, restart, and shutdown for cases where a VM or CT fails to stop.
-	--> Commands are now more optimized and easier to understand.
+	--> The !serverinfo command has been updated. The LXC container section has been added here as well. Internet monitoring bug fixed
+	--> Improved appearance
+	--> More refined and reworked commands
+	--> Enhanced security
+	--> Forced start, restart, and shutdown for cases where a VM or CT fails to stop
+	--> Commands are now more optimized and easier to understand
 	--> Discord bot status has been added
+}
 
-3. version: 2025-04-07 [Release Candidate]
-	--> Added `/listcts`
-	--> Refactored all commands to use the new Discord slash (`/`) format
-	--> Message formatting
-	--> Command updates and modernization
-	--> More modern appearance
-	--> Easier usability
-	--> Various bug fixes
-	--> Tons of new features
-	--> Replaced `/vminfo` and `/ctinfo` with `/vmavg` and `/ctavg`
-	--> Improved `/serverinfo` with storage color indicators (green/yellow/red)
+3. version: 2025-04-07 
+{
+	--> Rework and renovation of the entire project
+}
+
+4. version: 2025-04-11
+{
+	--> Fixed some authenticate user error
+	--> Reworked config and requests
+}
