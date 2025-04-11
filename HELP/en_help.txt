@@ -1,0 +1,118 @@
+Content of the config.json file:
+
+
+{
+    "bot_token":"your_bot_token",		---> 1.		            
+    "proxmox": {
+        "host":"your_host",			---> 2.             
+        "user":"your_user",			---> 3.             
+        "password":"your_psswd",		---> 4.         
+        "verify_ssl": false			---> 5.
+    },
+    "admin": {
+        "123123": "Admin ID"			---> 6.
+    },
+    "staff": {},				---> 7.
+    "user": {},					---> 8.
+    "log_channel": null
+}
+
+
+
+1. --> Enter your bot token between the "" here: https://discord.com/developers/applications to create a Discord bot. Help: https://discordpy.readthedocs.io/en/stable/discord.html
+
+2. --> Enter the Proxmox access between the "" here, e.g.: 192.168.0.102:8006
+
+3. --> Enter your Proxmox username between the "" here, by default: root@pam
+
+4. --> Enter your Proxmox password between the "" here, e.g.: benceontop
+
+5. --> Leave it as is this is the default
+
+6. --> Instead of "123123", enter the server owner's Discord ID between the "". The owner has full permissions to everything and all commands. They will receive notifications in case of an emergency and when someone performs an interaction, e.g.: stops a VM.
+
+7. --> You can specify the Discord IDs of the staff here. You can edit this here as well, but an easier solution is to use the /setstaff command like this: /setstaff <username / user mention / Discord ID>. After adding someone, you can verify it with the /config command or simply check the config.json file. The staff has access to everything and can fully manage all VMs and CTs. However, they cannot assign or edit permissions, nor can they set or delete logs.
+
+8. --> You can specify the users and the VMs/CTs they will have access to here. You can edit this here as well, but an easier solution is to use the /setuser command like this: /setuser <username / user mention / Discord ID> <allowed VM/CT ID, e.g., 100>. After adding someone, you can verify it with the /config command or simply check the config.json file. The user can only start, stop, and restart the defined VM, and they also have access to basic commands like /serverinfo and /listcommands. 
+
+
+-------------------------------
+The staff and user section can be further expanded. You can do this with a command or manually enter it in the config.
+-------------------------------
+
+-------------------------------
+Anyone who is neither a user, nor a staff member, nor an admin has no permissions for anything, and the bot will return an error: Error: You are not authorized to use this bot.
+-------------------------------
+
+
+----> Commands: 
+
+
+|-------------------------------|---------------------------------------------------------------|
+| /listcommands                 | Show all available commands with interactive dropdown 	|
+| /listnodes                    | List all nodes in your Proxmox cluster              		|
+| /listvms <node>               | List all virtual machines on a specific node        		|
+| /vmavg <node>                 | Show average resource usage of all VMs on the node  		|
+| /startvm <node> <vm_id>       | Start a virtual machine                            		|
+| /restartvm <node> <vm_id>     | Restart a virtual machine                          		|
+| /stopvm <node> <vm_id>        | Stop a virtual machine                             		|
+| /listcts <node>               | List all LXC containers on a node                  		|
+| /ctavg <node>                 | Show average resource usage of all containers       		|
+| /startct <node> <ct_id>       | Start a container                                  		|
+| /restartct <node> <ct_id>     | Restart a container                                		|
+| /stopct <node> <ct_id>        | Stop a container                                   		|
+| /serverinfo                   | Display comprehensive server status and resource usage 	|
+| /setlog                       | Set a logging channel for bot activity             		|
+| /deletelog                    | Remove the configured logging channel              		|
+| /setuser                      | Assign a user access to specific VMs/CTs            		|
+| /setstaff                     | Grant staff permissions to a user                  		|
+| /config                       | Display or verify the current bot configuration     		|
+|-------------------------------|---------------------------------------------------------------|
+
+
+
+----> start.bat:
+
+The start.bat file is a basic startup option in a Windows environment. The start.bat file must be in the same folder as the config.json and main.py files.
+
+
+
+----> Python: 
+
+python download: https://www.python.org/
+python version: 3.13.1
+(Install Python and make sure to add it to the PATH)
+
+
+Python packages:
+
+
+If you have successfully installed Python, you can verify it with this command: python --version
+
+After installing Python (with PATH added), install these packages from cmd.
+
+pip install discord.py
+pip install proxmoxer
+pip install requests
+pip install ping3
+pip install psutil
+
+
+
+----> Proxmox: 
+
+version: 8.3.2
+
+How can I check my version? Either through the web interface or by using the pveversion command.
+
+
+
+----------------------------
+Made By: Bence
+Made: 2025-01-06
+last update: 2025-04-07
+
+This is still a Release Candidate version, and more features, improvements, and optimizations will be coming soon.
+
+If you need help, my Discord is: bbencevagyok
+

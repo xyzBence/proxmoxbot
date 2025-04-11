@@ -1,0 +1,101 @@
+Inhalt der config.json-Datei:
+
+{
+    "bot_token":"your_bot_token",		---> 1.		            
+    "proxmox": {
+        "host":"your_host",			---> 2.             
+        "user":"your_user",			---> 3.             
+        "password":"your_psswd",		---> 4.         
+        "verify_ssl": false			---> 5.
+    },
+    "admin": {
+        "123123": "Admin ID"			---> 6.
+    },
+    "staff": {},				---> 7.
+    "user": {},					---> 8.
+    "log_channel": null
+}
+
+1. --> Gib hier zwischen "" den Token deines Bots ein: https://discord.com/developers/applications, um einen Discord-Bot zu erstellen. Hilfe: https://discordpy.readthedocs.io/en/stable/discord.html
+
+2. --> Gib hier zwischen "" den Zugang zu deinem Proxmox-Server ein, z. B.: 192.168.0.102:8006
+
+3. --> Gib hier zwischen "" den Benutzernamen deines Proxmox-Servers ein, standardmäßig: root@pam
+
+4. --> Gib hier zwischen "" das Passwort deines Proxmox-Servers ein, z. B.: benceontop
+
+5. --> Lass es so, dies ist der Standardwert
+
+6. --> Gib anstelle von "123123" zwischen "" die Discord-ID des Serverbesitzers ein. Der Besitzer hat vollen Zugriff auf alles und alle Befehle. Er erhält Benachrichtigungen im Notfall und wenn jemand eine Aktion durchführt, z. B. eine virtuelle Maschine stoppt.
+
+7. --> Hier kannst du die Discord-IDs des Personals (Staff) angeben. Du kannst dies hier bearbeiten, aber eine einfachere Lösung ist die Verwendung des Befehls /setstaff wie folgt: /setstaff <Benutzername / Benutzererwähnung / Discord-ID>. Nachdem du jemanden hinzugefügt hast, kannst du dies mit dem Befehl /config überprüfen oder einfach in der config.json-Datei nachsehen. Das Personal hat Zugriff auf alles und kann alle virtuellen Maschinen und Container vollständig verwalten. Sie können jedoch keine Berechtigungen zuweisen oder bearbeiten und keine Protokolle einrichten oder löschen.
+
+8. --> Hier kannst du Benutzer und die virtuellen Maschinen/Container angeben, auf die sie Zugriff haben. Du kannst dies hier bearbeiten, aber eine einfachere Lösung ist die Verwendung des Befehls /setuser wie folgt: /setuser <Benutzername / Benutzererwähnung / Discord-ID> <erlaubte VM/CT-ID, z. B. 100>. Nachdem du jemanden hinzugefügt hast, kannst du dies mit dem Befehl /config überprüfen oder einfach in der config.json-Datei nachsehen. Der Benutzer kann die angegebene VM nur starten, stoppen und neu starten und hat auch Zugriff auf grundlegende Befehle wie /serverinfo und /listcommands.
+
+-------------------------------
+Die Abschnitte „staff“ und „user“ können weiter erweitert werden. Dies kann über einen Befehl oder manuell in der Konfigurationsdatei erfolgen.
+-------------------------------
+
+-------------------------------
+Wer weder Benutzer, noch Personal, noch Administrator ist, hat keinerlei Berechtigungen, und der Bot gibt einen Fehler zurück: Error: You are not authorized to use this bot.
+-------------------------------
+
+----> Befehle:
+
+|-------------------------------|-------------------------------------------------------------------------------|
+| /listcommands                 | Zeigt alle verfügbaren Befehle mit interaktivem Dropdown-Menü 		|
+| /listnodes                    | Listet alle Knoten in deinem Proxmox-Cluster auf              		|
+| /listvms <node>               | Listet alle virtuellen Maschinen auf einem bestimmten Knoten 			|
+| /vmavg <node>                 | Zeigt den durchschnittlichen Ressourcenverbrauch aller VMs auf dem Knoten 	|
+| /startvm <node> <vm_id>       | Startet eine virtuelle Maschine                              			|
+| /restartvm <node> <vm_id>     | Startet eine virtuelle Maschine neu                          			|
+| /stopvm <node> <vm_id>        | Stoppt eine virtuelle Maschine                               			|
+| /listcts <node>               | Listet alle LXC-Container auf einem Knoten auf               			|
+| /ctavg <node>                 | Zeigt den durchschnittlichen Ressourcenverbrauch aller Container		|
+| /startct <node> <ct_id>       | Startet einen Container                                      			|
+| /restartct <node> <ct_id>     | Startet einen Container neu                                  			|
+| /stopct <node> <ct_id>        | Stoppt einen Container                                      	 		|
+| /serverinfo                   | Zeigt umfassende Serverstatus- und Ressourcenverbrauchsinformationen 		|
+| /setlog                       | Richtet einen Protokollkanal für Bot-Aktivitäten ein         			|
+| /deletelog                    | Entfernt den konfigurierten Protokollkanal                   			|
+| /setuser                      | Weist einem Benutzer Zugriff auf bestimmte VMs/CTs zu        			|
+| /setstaff                     | Gewährt einem Benutzer Personal-Berechtigungen               			|
+| /config                       | Zeigt die aktuelle Bot-Konfiguration an oder überprüft sie   			|
+|-------------------------------|-------------------------------------------------------------------------------|
+
+----> start.bat:
+
+Die start.bat-Datei ist eine einfache Startoption in einer Windows-Umgebung. Die start.bat-Datei muss sich im selben Ordner wie die config.json- und main.py-Dateien befinden.
+
+----> Python:
+
+Python-Download: https://www.python.org/
+Python-Version: 3.13.1
+(Installiere Python und stelle sicher, dass es zum PATH hinzugefügt wird)
+
+Python-Pakete:
+
+Wenn du Python erfolgreich installiert hast, kannst du dies mit folgendem Befehl überprüfen: python --version
+
+Nach der Installation von Python (mit hinzugefügtem PATH) installiere diese Pakete über die Eingabeaufforderung:
+
+pip install discord.py
+pip install proxmoxer
+pip install requests
+pip install ping3
+pip install psutil
+
+----> Proxmox:
+
+Version: 8.3.2
+
+Wie kann ich meine Version überprüfen? Entweder über die Weboberfläche oder mit dem Befehl pveversion.
+
+----------------------------
+Erstellt von: Bence
+Erstellt am: 2025-01-06
+Letztes Update: 2025-04-11
+
+Dies ist noch eine Release-Candidate-Version, und es werden bald weitere Funktionen, Verbesserungen und Optimierungen hinzugefügt.
+
+Wenn du Hilfe benötigst, mein Discord ist: bbencevagyok

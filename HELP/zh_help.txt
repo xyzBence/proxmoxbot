@@ -1,0 +1,101 @@
+config.json 文件内容：
+
+{
+    "bot_token":"your_bot_token",		---> 1.		            
+    "proxmox": {
+        "host":"your_host",			---> 2.             
+        "user":"your_user",			---> 3.             
+        "password":"your_psswd",		---> 4.         
+        "verify_ssl": false			---> 5.
+    },
+    "admin": {
+        "123123": "Admin ID"			---> 6.
+    },
+    "staff": {},				---> 7.
+    "user": {},					---> 8.
+    "log_channel": null
+}
+
+1. --> 在此处的 "" 之间输入你的机器人令牌：https://discord.com/developers/applications 以创建 Discord 机器人。帮助文档：https://discordpy.readthedocs.io/en/stable/discord.html
+
+2. --> 在此处的 "" 之间输入你的 Proxmox 服务器访问地址，例如：192.168.0.102:8006
+
+3. --> 在此处的 "" 之间输入你的 Proxmox 服务器用户名，默认值：root@pam
+
+4. --> 在此处的 "" 之间输入你的 Proxmox 服务器密码，例如：benceontop
+
+5. --> 保持不变，这是默认值
+
+6. --> 在 "" 之间替换 "123123" 为服务器拥有者的 Discord ID。拥有者对所有功能和命令有完全访问权限。他们会在紧急情况下以及有人执行操作时（例如停止虚拟机）收到通知。
+
+7. --> 在此处可以指定员工（staff）的 Discord ID。你可以直接在此编辑，但更简单的解决方案是使用 /setstaff 命令，格式如下：/setstaff <用户名 / 用户提及 / Discord ID>。添加某人后，你可以通过 /config 命令检查，或者直接查看 config.json 文件。员工对所有内容有访问权限，可以完全管理所有虚拟机和容器。但他们无法分配或编辑权限，也无法设置或删除日志。
+
+8. --> 在此处可以指定用户以及他们有权访问的虚拟机/容器。你可以直接在此编辑，但更简单的解决方案是使用 /setuser 命令，格式如下：/setuser <用户名 / 用户提及 / Discord ID> <允许的虚拟机/容器 ID，例如 100>。添加某人后，你可以通过 /config 命令检查，或者直接查看 config.json 文件。用户只能启动、停止和重启指定的虚拟机，并且还可以访问基本命令，如 /serverinfo 和 /listcommands。
+
+-------------------------------
+员工（staff）和用户（user）部分可以进一步扩展。你可以通过命令或手动在配置文件中进行扩展。
+-------------------------------
+
+-------------------------------
+任何既不是用户、员工也不是管理员的人没有任何权限，机器人将返回错误：Error: You are not authorized to use this bot。
+-------------------------------
+
+----> 命令：
+
+|-------------------------------|---------------------------------------------------------------|
+| /listcommands                 | 显示所有可用命令，带交互式下拉菜单                           	|
+| /listnodes                    | 列出你的 Proxmox 集群中的所有节点                           	|
+| /listvms <node>               | 列出指定节点上的所有虚拟机                                   	|
+| /vmavg <node>                 | 显示节点上所有虚拟机的平均资源使用情况                       	|
+| /startvm <node> <vm_id>       | 启动一个虚拟机                                               	|
+| /restartvm <node> <vm_id>     | 重启一个虚拟机                                               	|
+| /stopvm <node> <vm_id>        | 停止一个虚拟机                                               	|
+| /listcts <node>               | 列出节点上的所有 LXC 容器                                    	|
+| /ctavg <node>                 | 显示所有容器的平均资源使用情况                               	|
+| /startct <node> <ct_id>       | 启动一个容器                                                	|
+| /restartct <node> <ct_id>     | 重启一个容器                                                 	|
+| /stopct <node> <ct_id>        | 停止一个容器                                                 	|
+| /serverinfo                   | 显示详细的服务器状态和资源使用信息                           	|
+| /setlog                       | 为机器人活动设置日志通道                                     	|
+| /deletelog                    | 删除已配置的日志通道                                         	|
+| /setuser                      | 为用户分配对特定虚拟机/容器的访问权限                         	|
+| /setstaff                     | 授予用户员工权限                                             	|
+| /config                       | 显示或验证当前机器人配置                                     	|	
+|-------------------------------|---------------------------------------------------------------|
+
+----> start.bat：
+
+start.bat 文件是 Windows 环境下的简单启动选项。start.bat 文件必须与 config.json 和 main.py 文件位于同一文件夹中。
+
+----> Python：
+
+Python 下载：https://www.python.org/
+Python 版本：3.13.1
+（安装 Python 并确保将其添加到 PATH 中）
+
+Python 包：
+
+如果已成功安装 Python，可以使用以下命令验证：python --version
+
+安装 Python（并添加到 PATH）后，通过命令提示符安装以下包：
+
+pip install discord.py
+pip install proxmoxer
+pip install requests
+pip install ping3
+pip install psutil
+
+----> Proxmox：
+
+版本：8.3.2
+
+如何检查版本？可以通过 Web 界面或使用 pveversion 命令。
+
+----------------------------
+作者：Bence
+创建日期：2025-01-06
+最后更新：2025-04-11
+
+这仍是一个候选发布版本，更多功能、改进和优化即将推出。
+
+如果需要帮助，我的 Discord 是：bbencevagyok

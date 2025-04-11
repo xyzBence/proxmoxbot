@@ -1,0 +1,109 @@
+config.json file tartalma:
+
+{
+    "bot_token":"your_bot_token",		---> 1.		            
+    "proxmox": {
+        "host":"your_host",			---> 2.             
+        "user":"your_user",			---> 3.             
+        "password":"your_psswd",		---> 4.         
+        "verify_ssl": false			---> 5.
+    },
+    "admin": {
+        "123123": "Admin ID"			---> 6.
+    },
+    "staff": {},				---> 7.
+    "user": {},					---> 8.
+    "log_channel": null
+}
+
+1. --> Írd a "your_bot_token" helyére a "" közé a Discord botod tokenjét. Itt tudsz Discord botot készíteni: https://discord.com/developers/applications. Segédlet: https://discordpy.readthedocs.io/en/stable/discord.html
+
+2. --> Írd a "your_host" helyére a "" közé a Proxmox szervered elérési útját, pl.: 192.168.0.102:8006
+
+3. --> Írd a "your_user" helyére a "" közé a Proxmox szervered felhasználónevét, alapértelmezett: root@pam
+
+4. --> Írd a "your_psswd" helyére a "" közé a Proxmox szervered jelszavát, pl.: benceontop
+
+5. --> Hagyd így, ez az alapértelmezett
+
+6. --> Írd a "123123" helyére a "" közé a szerver tulajdonosának Discord ID-ját. A tulajdonosnak mindenhez teljes hozzáférése van, minden parancsot használhat. Értesítéseket kap vészhelyzet esetén, illetve ha valaki műveletet végez, pl.: leállít egy VM-et.
+
+7. --> Itt tudod megadni a staff Discord ID-jait. Ezt itt is szerkesztheted, de egyszerűbb megoldás, ha használod a /setstaff parancsot így: /setstaff <felhasználó neve / megemlítve a felhasználó / Discord ID>. Miután hozzáadtál valakit, ellenőrizheted a /config paranccsal, vagy egyszerűen megnézheted a config.json fájlban. A staff mindenhez hozzáfér, és teljesen kezelheti az összes VM-et és konténert. Azonban nem adhat vagy szerkeszthet jogosultságokat, és nem állíthat be vagy törölhet naplózási csatornát.
+
+8. --> Itt tudod megadni a felhasználókat és azokat a VM-eket/konténereket, amikhez hozzáférhetnek. Ezt itt is szerkesztheted, de egyszerűbb megoldás, ha használod a /setuser parancsot így: /setuser <felhasználó neve / megemlítve a felhasználó / Discord ID> <engedélyezett VM/CT ID, pl. 100>. Miután hozzáadtál valakit, ellenőrizheted a /config paranccsal, vagy egyszerűen megnézheted a config.json fájlban. A felhasználó csak az adott VM-et tudja elindítani, leállítani és újraindítani, de az alapvető parancsokat is használhatja, pl.: /serverinfo és /listcommands.
+
+-------------------------------
+A staff és a user szekció tovább bővíthető. Ezt megteheted paranccsal vagy manuálisan a config fájlban.
+-------------------------------
+
+-------------------------------
+Akinek nincs se user, se staff, se admin jogosultsága, az semmilyen műveletet nem végezhet, és a bot hibát fog visszaadni: Error: You are not authorized to use this bot.
+-------------------------------
+
+
+----> Parancsok: 
+
+|-------------------------------|-----------------------------------------------------------------------|
+| /listcommands                 | Az összes elérhető parancs megjelenítése interaktív legördülő menüvel |
+| /listnodes                    | A Proxmox klaszter összes csomópontjának listázása               	|
+| /listvms <node>               | Egy adott csomóponton lévő összes virtuális gép listázása        	|
+| /vmavg <node>                 | Az összes virtuális gép átlagos erőforrás-használatának megjelenítése |
+| /startvm <node> <vm_id>       | Virtuális gép indítása                                          	|
+| /restartvm <node> <vm_id>     | Virtuális gép újraindítása                                      	|
+| /stopvm <node> <vm_id>        | Virtuális gép leállítása                                        	|
+| /listcts <node>               | Egy csomóponton lévő összes LXC konténer listázása              	|
+| /ctavg <node>                 | Az összes konténer átlagos erőforrás-használatának megjelenítése 	|
+| /startct <node> <ct_id>       | Konténer indítása                                              	|
+| /restartct <node> <ct_id>     | Konténer újraindítása                                          	|
+| /stopct <node> <ct_id>        | Konténer leállítása                                            	|
+| /serverinfo                   | Átfogó kiszolgálóállapot és erőforrás-használat megjelenítése   	|
+| /setlog                       | Naplózási csatorna beállítása a bot tevékenységeihez            	|
+| /deletelog                    | A beállított naplózási csatorna eltávolítása                    	|
+| /setuser                      | Felhasználó hozzárendelése adott virtuális gépekhez/konténerekhez 	|
+| /setstaff                     | Munkatársi jogosultságok adása egy felhasználónak               	|
+| /config                       | A bot aktuális konfigurációjának megjelenítése vagy ellenőrzése  	|
+|-------------------------------|-----------------------------------------------------------------------|
+
+
+----> start.bat:
+
+A start.bat file egy indító file Windows-on. Egy mappába legyen a config.json-el és a main.py-al és akkor ezzel el tudod indítani a botot.
+
+
+----> Python: 
+
+python letöltés: https://www.python.org/
+python verzió: 3.13.1
+(Telepítés során add hozzá PATH-hez)
+
+Python csomagok:
+
+
+Ha sikeressen telepítetted a python-t az alábbi parancsal tudod cmd-ben ellenőrizni, hogy valóban sikeres volt-e a telepítés: python --version
+
+Miután telepítetted a python-t (PATH-hez), töltsd le ezeket a csomagokat cmd-ből.
+
+pip install discord.py
+pip install proxmoxer
+pip install requests
+pip install ping3
+pip install psutil
+
+
+----> Proxmox: 
+
+verzió: 8.3.2
+
+Hogyan tudom megnézni a verzióm? A web kezelőfelületen vagy pedig a pveversion parancs használatával.
+
+
+
+----------------------------
+Készítette: Bence
+Készült: 2025-04-06
+Utolsó frissítés: 2025-04-11
+
+Ez egy Release Candidate verzió hamarossan érkeznek frissítések és fejlesztések hozzá illtve hibajavítások.
+
+Ha segítségre lenne szükséged vagy ötleted lenne keress Discordon: bbencevagyok
+
