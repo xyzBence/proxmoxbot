@@ -18,26 +18,26 @@ A modern Discord bot for monitoring and managing your Proxmox servers directly f
 
 ## 🧾 Slash Commands
 
-| Command                        | Description |
-|-------------------------------|-------------|
-| `/listcommands`               | Show all available commands with interactive dropdown |
-| `/listnodes`                  | List all nodes in your Proxmox cluster |
-| `/listvms <node>`             | List all virtual machines on a specific node |
-| `/vmavg <node>`               | Show average resource usage of all VMs on the node |
-| `/startvm <node> <vm_id>`     | Start a virtual machine |
-| `/restartvm <node> <vm_id>`   | Restart a virtual machine |
-| `/stopvm <node> <vm_id>`      | Stop a virtual machine |
-| `/listcts <node>`             | List all LXC containers on a node |
-| `/ctavg <node>`               | Show average resource usage of all containers |
-| `/startct <node> <ct_id>`     | Start a container |
-| `/restartct <node> <ct_id>`   | Restart a container |
-| `/stopct <node> <ct_id>`      | Stop a container |
-| `/serverinfo`                 | Display comprehensive server status and resource usage |
-| `/setlog`                     |
-| `/deletelog`                  |   
-| `/setuser`                    |
-| `/setstaff`                   |
-| `/config`                     |
+| Command                      | Description                                                        |
+|-------------------------------|---------------------------------------------------------------|
+| `/listcommands`               | Show all available commands with interactive dropdown         |
+| `/listnodes`                  | List all nodes in your Proxmox cluster                       |
+| `/listvms <node>`             | List all virtual machines on a specific node                 |
+| `/vmavg <node>`               | Show average resource usage of all VMs on the node           |
+| `/startvm <node> <vm_id>`     | Start a virtual machine                                     |
+| `/restartvm <node> <vm_id>`   | Restart a virtual machine                                   |
+| `/stopvm <node> <vm_id>`      | Stop a virtual machine                                      |
+| `/listcts <node>`             | List all LXC containers on a node                           |
+| `/ctavg <node>`               | Show average resource usage of all containers               |
+| `/startct <node> <ct_id>`     | Start a container                                           |
+| `/restartct <node> <ct_id>`   | Restart a container                                         |
+| `/stopct <node> <ct_id>`      | Stop a container                                            |
+| `/serverinfo`                 | Display comprehensive server status and resource usage      |
+| `/setlog`                     | Set a logging channel for bot activity                      |
+| `/deletelog`                  | Remove the configured logging channel                       |
+| `/setuser`                    | Assign a user access to specific VMs/CTs                    |
+| `/setstaff`                   | Grant staff permissions to a user                           |
+| `/config`                     | Display or verify the current bot configuration             |
 
 ---
 
@@ -121,13 +121,11 @@ import datetime
 - Smarter and clearer bot status messages
 
 ### **version: 2025-04-07 [Release Candidate]**
-- Refactored all commands to use the new Discord slash (`/`) format
-- Message formatting
-- Command updates and modernization
-- More modern appearance
-- Easier usability
-- Various bug fixes
-- Tons of new features
+- Rework and renovation of the entire project
+
+### **version: 2025-04-011 [Release Candidate]**
+- Fixed some authenticate user error
+- Reworked config and requests
 
 ---
 
