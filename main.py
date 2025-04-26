@@ -81,16 +81,32 @@ def reconnect_proxmox():
             verify_ssl=config["proxmox"]["verify_ssl"]
         )
         logging.info("Reconnected to Proxmox API successfully.")
+        return True
     except Exception as e:
         logging.error(f"Failed to reconnect to Proxmox API: {e}")
+        return False
 
 def ensure_proxmox_connection():
     """Ensure Proxmox connection is valid, reconnect if needed."""
+    global proxmox
     try:
+        
         proxmox.nodes.get()
-    except Exception:
-        logging.info("Proxmox connection expired, reconnecting...")
-        reconnect_proxmox()
+        return True
+    except Exception as e:
+        logging.info(f"Proxmox connection invalid or expired: {e}, attempting to reconnect...")
+        if reconnect_proxmox():
+            try:
+                
+                proxmox.nodes.get()
+                logging.info("New Proxmox connection verified.")
+                return True
+            except Exception as e:
+                logging.error(f"Failed to verify new Proxmox connection: {e}")
+                return False
+        else:
+            logging.error("Reconnection attempt failed.")
+            return False
 
 @tasks.loop(minutes=5)
 async def auto_reconnect_proxmox():
