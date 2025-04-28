@@ -2,6 +2,7 @@
 
 A modern Discord bot for monitoring and managing your Proxmox servers directly from Discord. Designed for simplicity, reliability, and powerful automation features.
 
+Tutorial viedo: https://www.youtube.com/watch?v=oOvKcVz18RE
 ---
 
 ## 📦 Features
